@@ -4,7 +4,7 @@ using IntegrationTest.Plumbing;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace IntegrationTest
+namespace IntegrationTest.Ec2
 {
     public class VpcServiceTests
     {

@@ -4,9 +4,9 @@ using IntegrationTest.Plumbing;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace IntegrationTest
+namespace IntegrationTest.Ec2
 {
-    public class SecurityGroupServiceTests
+    public class RouteTableServiceTests
     {
         [SetUp]
         public void Setup()
@@ -15,17 +15,18 @@ namespace IntegrationTest
         }
 
         [Test]
-        public async Task DescribeVpcsAsync_when_any_exist_should_describe_vpcs()
+        public async Task DescribeRouteTablesAsync_when_any_exist_should_describe_route_tables()
         {
             // Arrange
             var client = new EnvironmentVariables().GetAmazonEC2Client();
-            ISecurityGroupService classUnderTest = new SecurityGroupService(client);
+            IRouteTableService classUnderTest = new RouteTableService(client);
 
             // Act
-            var response = await classUnderTest.DescribeSecurityGroupsAsync();
+            var response = await classUnderTest.DescribeRouteTablesAsync();
 
             // Assert
-            Assert.IsTrue(response.SecurityGroups.Count >= 1);
+            Assert.IsTrue(response.RouteTables != null);
+            Assert.IsTrue(response.RouteTables.Count >= 1);
         }
     }
 }

@@ -1,11 +1,10 @@
-﻿using Amazon.EC2;
-using Business.AmazonWebServices.Ec2;
+﻿using Business.AmazonWebServices.Ec2;
 using Business.AmazonWebServices.Ec2.Interface;
 using IntegrationTest.Plumbing;
 using NUnit.Framework;
 using System.Threading.Tasks;
 
-namespace IntegrationTest
+namespace IntegrationTest.Ec2
 {
     public class DhcpOptionsSetServiceTests
     {
