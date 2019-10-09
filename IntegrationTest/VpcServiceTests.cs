@@ -1,5 +1,5 @@
-using Amazon.EC2;
 using Business.AmazonWebServices.Ec2;
+using Business.AmazonWebServices.Ec2.Interface;
 using IntegrationTest.Plumbing;
 using NUnit.Framework;
 using System.Threading.Tasks;
@@ -19,8 +19,8 @@ namespace IntegrationTest
         {
             // Arrange
             var cidrBlock = "10.0.0.0/16";
-            var client = new AmazonEC2Client();
-            var classUnderTest = new VpcService(client);
+            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            IVpcService classUnderTest = new VpcService(client);
             
             // Act
             var response = await classUnderTest.CreateVpcAsync(cidrBlock);
@@ -34,8 +34,8 @@ namespace IntegrationTest
         public async Task DescribeVpcsAsync_when_any_exist_should_describe_vpcs()
         {
             // Arrange
-            var client = new AmazonEC2Client();
-            var classUnderTest = new VpcService(client);
+            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            IVpcService classUnderTest = new VpcService(client);
 
             // Act
             var response = await classUnderTest.DescribeVpcsAsync();
@@ -49,8 +49,8 @@ namespace IntegrationTest
         {
             // Arrange
             var vpcId = "vpc-04bcccec7c7d8bff3";
-            var client = new AmazonEC2Client();
-            var classUnderTest = new VpcService(client);
+            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            IVpcService classUnderTest = new VpcService(client);
 
             // Act
             var response = await classUnderTest.DeleteVpcAsync(vpcId);

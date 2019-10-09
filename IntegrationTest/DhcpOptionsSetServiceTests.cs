@@ -1,5 +1,6 @@
 ﻿using Amazon.EC2;
 using Business.AmazonWebServices.Ec2;
+using Business.AmazonWebServices.Ec2.Interface;
 using IntegrationTest.Plumbing;
 using NUnit.Framework;
 using System.Threading.Tasks;
@@ -18,8 +19,8 @@ namespace IntegrationTest
         public async Task DescribeDhcpOptionsAsync_when_any_exist_should_describe_dhcpOptions()
         {
             // Arrange
-            var client = new AmazonEC2Client();
-            var classUnderTest = new DhcpOptionsSetService(client);
+            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            IDhcpOptionsSetService classUnderTest = new DhcpOptionsSetService(client);
 
             // Act
             var response = await classUnderTest.DescribeDhcpOptionsAsync();
@@ -34,8 +35,8 @@ namespace IntegrationTest
         {
             // Arrange
             var dhcpOptionsId = "dopt-02cf95eb8988525ba";
-            var client = new AmazonEC2Client();
-            var classUnderTest = new DhcpOptionsSetService(client);
+            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            IDhcpOptionsSetService classUnderTest = new DhcpOptionsSetService(client);
 
             // Act
             var response = await classUnderTest.DeleteDhcpOptionsAsync(dhcpOptionsId);
