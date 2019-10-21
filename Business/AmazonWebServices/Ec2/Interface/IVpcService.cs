@@ -10,7 +10,7 @@ namespace Business.AmazonWebServices.Ec2.Interface
         /// <summary>
         /// AWS SKD will also create default `Security Group`, `Route Table`, `DHCP options sets` and `Network ACLs`
         /// </summary>
-        /// <param name="cidrBlock"></param>
+        /// <param name="cidrBlock">Example: 10.0.0.0/16</param>
         /// <returns></returns>
         Task<CreateVpcResponse> CreateVpcAsync(string cidrBlock);
 
