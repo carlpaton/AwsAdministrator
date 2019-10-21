@@ -8,21 +8,15 @@ namespace IntegrationTest.Ec2
 {
     public class SubnetServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-            new EnvironmentVariables();
-        }
-
         [Test]
         public async Task CreateSubnetAsync_should_create_and_return_subnet()
         {
             // Arrange
-            var vpcId = "vpc-056cf56119b3d5ea2";
-            var cidrBlock = "10.0.0.0/24";
-            cidrBlock = "10.0.1.0/24";
+            var vpcId = "vpc-0d8d14453b7292cd9";
+            var cidrBlock = "10.0.1.0/24";
+            cidrBlock = "10.0.0.0/24";
 
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             ISubnetService classUnderTest = new SubnetService(client);
 
             // Act
@@ -37,7 +31,7 @@ namespace IntegrationTest.Ec2
         public async Task DescribeSubnetsAsync_when_any_exist_should_describe_subnets()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             ISubnetService classUnderTest = new SubnetService(client);
 
             // Act
@@ -52,7 +46,7 @@ namespace IntegrationTest.Ec2
         {
             // Arrange
             var subnetId = "subnet-0c7f1fd88bd8b7694";
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             ISubnetService classUnderTest = new SubnetService(client);
 
             // Act

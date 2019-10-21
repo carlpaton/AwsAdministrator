@@ -18,7 +18,7 @@ namespace IntegrationTest.Ec2
         public async Task DescribeDhcpOptionsAsync_when_any_exist_should_describe_dhcpOptions()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             IDhcpOptionsSetService classUnderTest = new DhcpOptionsSetService(client);
 
             // Act
@@ -33,8 +33,8 @@ namespace IntegrationTest.Ec2
         public async Task DeleteDhcpOptionsAsync_when_dhcpOptionsId_exists_should_delete()
         {
             // Arrange
-            var dhcpOptionsId = "dopt-02cf95eb8988525ba";
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var dhcpOptionsId = "dopt-01db9792f40e1f47d";
+            var client = new EnvironmentVariables().CloudComputeClient();
             IDhcpOptionsSetService classUnderTest = new DhcpOptionsSetService(client);
 
             // Act

@@ -8,17 +8,11 @@ namespace IntegrationTest.Ec2
 {
     public class NetworkAclsServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-            new EnvironmentVariables();
-        }
-
         [Test]
         public async Task DescribeNetworkAclsAsync_when_any_exist_should_describe_network_acls()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             INetworkAclsService classUnderTest = new NetworkAclsService(client);
 
             // Act

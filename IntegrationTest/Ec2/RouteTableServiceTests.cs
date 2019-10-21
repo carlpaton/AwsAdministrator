@@ -18,7 +18,7 @@ namespace IntegrationTest.Ec2
         public async Task DescribeRouteTablesAsync_when_any_exist_should_describe_route_tables()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             IRouteTableService classUnderTest = new RouteTableService(client);
 
             // Act

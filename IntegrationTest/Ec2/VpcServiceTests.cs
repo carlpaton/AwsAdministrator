@@ -8,18 +8,12 @@ namespace IntegrationTest.Ec2
 {
     public class VpcServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-            new EnvironmentVariables();
-        }
-
         [Test]
         public async Task CreateVpcAsync_should_create_and_return_vpc()
         {
             // Arrange
             var cidrBlock = "10.0.0.0/16";
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             IVpcService classUnderTest = new VpcService(client);
             
             // Act
@@ -34,7 +28,7 @@ namespace IntegrationTest.Ec2
         public async Task DescribeVpcsAsync_when_any_exist_should_describe_vpcs()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             IVpcService classUnderTest = new VpcService(client);
 
             // Act
@@ -49,7 +43,7 @@ namespace IntegrationTest.Ec2
         {
             // Arrange
             var vpcId = "vpc-04bcccec7c7d8bff3";
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             IVpcService classUnderTest = new VpcService(client);
 
             // Act

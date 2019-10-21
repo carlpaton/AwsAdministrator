@@ -8,17 +8,11 @@ namespace IntegrationTest.Ec2
 {
     public class SecurityGroupServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-            new EnvironmentVariables();
-        }
-
         [Test]
-        public async Task DescribeSecurityGroupsAsync_when_any_exist_should_describe_security_groups()
+        public async Task DescribeSecurityGroupAsync_when_any_exist_should_describe_security_groups()
         {
             // Arrange
-            var client = new EnvironmentVariables().GetAmazonEC2Client();
+            var client = new EnvironmentVariables().CloudComputeClient();
             ISecurityGroupService classUnderTest = new SecurityGroupService(client);
 
             // Act
