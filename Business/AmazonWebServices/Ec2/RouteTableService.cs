@@ -7,16 +7,16 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class RouteTableService : IRouteTableService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public RouteTableService(IAmazonEC2 amazonEC2Client)
+        public RouteTableService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<DescribeRouteTablesResponse> DescribeRouteTablesAsync()
         {
-            var response = await _amazonEC2Client.DescribeRouteTablesAsync();
+            var response = await _cloudComputeClient.DescribeRouteTablesAsync();
             return response;
         }
     }

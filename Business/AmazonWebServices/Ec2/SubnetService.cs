@@ -7,30 +7,30 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class SubnetService : ISubnetService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public SubnetService(IAmazonEC2 amazonEC2Client)
+        public SubnetService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<CreateSubnetResponse> CreateSubnetAsync(string vpcId, string cidrBlock)
         {
             var request = new CreateSubnetRequest(vpcId, cidrBlock);
-            var response = await _amazonEC2Client.CreateSubnetAsync(request);
+            var response = await _cloudComputeClient.CreateSubnetAsync(request);
             return response;
         }
 
         public async Task<DescribeSubnetsResponse> DescribeSubnetsAsync()
         {
-            var response = await _amazonEC2Client.DescribeSubnetsAsync();
+            var response = await _cloudComputeClient.DescribeSubnetsAsync();
             return response;
         }
 
         public async Task<DeleteSubnetResponse> DeleteSubnetAsync(string subnetId)
         {
             var request = new DeleteSubnetRequest(subnetId);
-            var response = await _amazonEC2Client.DeleteSubnetAsync(request);
+            var response = await _cloudComputeClient.DeleteSubnetAsync(request);
             return response;
         }
     }

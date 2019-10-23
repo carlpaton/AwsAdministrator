@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace Business.AmazonWebServices.Ec2.Interface
 {
-    public interface ISecurityGroupsService
+    public interface IRunInstanceService
     {
-        Task<DescribeSecurityGroupsResponse> DescribeSecurityGroupsAsync();
+        Task<RunInstancesResponse> RunInstancesAsync(string launchTemplateId);
     }
 }

@@ -7,11 +7,11 @@ namespace Business.AmazonWebServices.Ecs
 {
     public class TaskService : ITaskService
     {
-        private readonly IAmazonECS _amazonECSClient;
+        private readonly IAmazonECS _containerServiceClient;
 
-        public TaskService(IAmazonECS amazonECSClient)
+        public TaskService(IAmazonECS containerServiceClient)
         {
-            _amazonECSClient = amazonECSClient;
+            _containerServiceClient = containerServiceClient;
         }
 
         public async Task<DescribeTaskDefinitionResponse> DescribeTaskDefinitionAsync(string taskDefinition)
@@ -21,14 +21,14 @@ namespace Business.AmazonWebServices.Ecs
                 TaskDefinition = taskDefinition
             };
 
-            var response = await _amazonECSClient.DescribeTaskDefinitionAsync(request);
+            var response = await _containerServiceClient.DescribeTaskDefinitionAsync(request);
             return response;
         }
 
         public async Task<ListTaskDefinitionsResponse> ListTaskDefinitionsAsync()
         {
             var request = new ListTaskDefinitionsRequest();
-            var response = await _amazonECSClient.ListTaskDefinitionsAsync(request);
+            var response = await _containerServiceClient.ListTaskDefinitionsAsync(request);
             return response;
         }
     }

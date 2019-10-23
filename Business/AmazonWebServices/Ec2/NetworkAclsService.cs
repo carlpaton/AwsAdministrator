@@ -7,16 +7,16 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class NetworkAclsService : INetworkAclsService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public NetworkAclsService(IAmazonEC2 amazonEC2Client)
+        public NetworkAclsService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<DescribeNetworkAclsResponse> DescribeNetworkAclsAsync()
         {
-            var response = await _amazonEC2Client.DescribeNetworkAclsAsync();
+            var response = await _cloudComputeClient.DescribeNetworkAclsAsync();
             return response;
         }
     }

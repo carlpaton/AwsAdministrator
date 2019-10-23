@@ -7,24 +7,24 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class DhcpOptionsSetService : IDhcpOptionsSetService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public DhcpOptionsSetService(IAmazonEC2 amazonEC2Client)
+        public DhcpOptionsSetService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<DeleteDhcpOptionsResponse> DeleteDhcpOptionsAsync(string dhcpOptionsId)
         {
             var request = new DeleteDhcpOptionsRequest(dhcpOptionsId);
-            var response = await _amazonEC2Client.DeleteDhcpOptionsAsync(request);
+            var response = await _cloudComputeClient.DeleteDhcpOptionsAsync(request);
             return response;
         }
 
         public async Task<DescribeDhcpOptionsResponse> DescribeDhcpOptionsAsync()
         {
             var request = new DescribeDhcpOptionsRequest();
-            var response = await _amazonEC2Client.DescribeDhcpOptionsAsync(request);
+            var response = await _cloudComputeClient.DescribeDhcpOptionsAsync(request);
             return response;
         }
     }

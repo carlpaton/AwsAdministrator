@@ -7,11 +7,11 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class NetworkInterfaceService : INetworkInterfaceService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public NetworkInterfaceService(IAmazonEC2 amazonEC2Client)
+        public NetworkInterfaceService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<CreateNetworkInterfaceResponse> CreateNetworkInterfaceAsync(string subnetId)
@@ -21,14 +21,14 @@ namespace Business.AmazonWebServices.Ec2
                 SubnetId = subnetId
             };
 
-            var response = await _amazonEC2Client.CreateNetworkInterfaceAsync(request);
+            var response = await _cloudComputeClient.CreateNetworkInterfaceAsync(request);
             return response;
         }
 
         public async Task<DescribeNetworkInterfacesResponse> DescribeNetworkInterfacesAsync()
         {
             var request = new DescribeNetworkInterfacesRequest();
-            var response = await _amazonEC2Client.DescribeNetworkInterfacesAsync(request);
+            var response = await _cloudComputeClient.DescribeNetworkInterfacesAsync(request);
             return response;
         }
     }

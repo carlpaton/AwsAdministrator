@@ -7,17 +7,17 @@ namespace Business.AmazonWebServices.Ec2
 {
     public class SecurityGroupService : ISecurityGroupService
     {
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
 
-        public SecurityGroupService(IAmazonEC2 amazonEC2Client)
+        public SecurityGroupService(IAmazonEC2 cloudComputeClient)
         {
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
         }
 
         public async Task<DescribeSecurityGroupsResponse> DescribeSecurityGroupsAsync()
         {
             var request = new DescribeSecurityGroupsRequest();
-            var response = await _amazonEC2Client.DescribeSecurityGroupsAsync(request);
+            var response = await _cloudComputeClient.DescribeSecurityGroupsAsync(request);
             return response;
         }
     }
