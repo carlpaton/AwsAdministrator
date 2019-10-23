@@ -4,6 +4,7 @@ namespace Business.AmazonWebServices.Ec2.Model
 {
     public class CreateLaunchTemplateModel
     {
+        public string LaunchTemplateName { get; set; }
         public RequestLaunchTemplateData LaunchTemplateData { get; set; }
     }
 

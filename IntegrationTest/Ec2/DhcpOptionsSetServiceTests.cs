@@ -8,12 +8,6 @@ namespace IntegrationTest.Ec2
 {
     public class DhcpOptionsSetServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-            new EnvironmentVariables();
-        }
-
         [Test]
         public async Task DescribeDhcpOptionsAsync_when_any_exist_should_describe_dhcpOptions()
         {

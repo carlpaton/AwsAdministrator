@@ -24,5 +24,23 @@ namespace Business.AmazonWebServices.Ec2
             var response = await _cloudComputeClient.CreateLaunchTemplateAsync(request);
             return response;
         }
+
+        public async Task<DeleteLaunchTemplateResponse> DeleteLaunchTemplateAsync(string launchTemplateId)
+        {
+            var request = new DeleteLaunchTemplateRequest
+            {
+               LaunchTemplateId = launchTemplateId
+            };
+
+            var response = await _cloudComputeClient.DeleteLaunchTemplateAsync(request);
+            return response;
+        }
+
+        public async Task<DescribeLaunchTemplatesResponse> DescribeLaunchTemplatesAsync()
+        {
+            var request = new DescribeLaunchTemplatesRequest();
+            var response = await _cloudComputeClient.DescribeLaunchTemplatesAsync(request);
+            return response;
+        }
     }
 }
