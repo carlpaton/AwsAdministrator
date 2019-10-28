@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{BCA6C3E6-9BF3-4915-9CC6-36651A0E8200}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{46D587FE-84A2-4246-AA10-E181646A6AE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{46D587FE-84A2-4246-AA10-E181646A6AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{C7AF9754-EDC3-4CD5-9C89-8A8856BFB12D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTest", "IntegrationTest\IntegrationTest.csproj", "{C7AF9754-EDC3-4CD5-9C89-8A8856BFB12D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CA2E735B-2408-4028-951B-8029F1ECE5C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C7AF9754-EDC3-4CD5-9C89-8A8856BFB12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7AF9754-EDC3-4CD5-9C89-8A8856BFB12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7AF9754-EDC3-4CD5-9C89-8A8856BFB12D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2E735B-2408-4028-951B-8029F1ECE5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2E735B-2408-4028-951B-8029F1ECE5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2E735B-2408-4028-951B-8029F1ECE5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2E735B-2408-4028-951B-8029F1ECE5C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,7 +13,7 @@ namespace IntegrationTest.Ec2
         {
             // Arrange
             var client = new EnvironmentVariables().CloudComputeClient();
-            var subNetId = "subnet-0c9880b42ac295441";
+            var subNetId = "subnet-0def36aec91aeced5";
             INetworkInterfaceService classUnderTest = new NetworkInterfaceService(client);
 
             // Act

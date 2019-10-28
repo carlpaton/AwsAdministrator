@@ -11,6 +11,6 @@ namespace Business.AmazonWebServices.Ec2.Interface
 
         Task<DeleteLaunchTemplateResponse> DeleteLaunchTemplateAsync(string launchTemplateId);
 
-        //DeleteLaunchTemplateVersionsAsync
+        Task<DescribeLaunchTemplateVersionsResponse> DescribeLaunchTemplateVersionsAsync(string launchTemplateId);
     }
 }

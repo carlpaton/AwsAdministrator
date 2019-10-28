@@ -3,8 +3,9 @@ using System.Threading.Tasks;
 
 namespace Business.AmazonWebServices.Ec2.Interface
 {
-    public interface IRunInstanceService
+    public interface IInstanceService
     {
         Task<RunInstancesResponse> RunInstancesAsync(string launchTemplateId);
+        Task<DescribeInstancesResponse> DescribeInstancesAsync();
     }
 }
