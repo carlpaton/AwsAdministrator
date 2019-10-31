@@ -106,10 +106,14 @@ this becomes
 IyEvYmluL2Jhc2gKZWNobyBFQ1NfQ0xVU1RFUj1sZXhpY29uLWNsdXN0ZXIgPj4gL2V0Yy9lY3MvZWNzLmNvbmZpZztlY2hvIEVDU19CQUNLRU5EX0hPU1Q9ID4+IC9ldGMvZWNzL2Vjcy5jb25maWc7
 ```
 
+* https://docs.aws.amazon.com/en_pv/AmazonECS/latest/developerguide/bootstrap_container_instance.html
+
 **Run Instance**
 
 * `IntegrationTest\Ec2\InstanceServiceTests.cs`
   * `RunInstancesAsync_should_run_the_given_launchTemplateId`
+
+* https://aws.amazon.com/premiumsupport/knowledge-center/ecs-agent-disconnected/
 
 **Cluster**
 

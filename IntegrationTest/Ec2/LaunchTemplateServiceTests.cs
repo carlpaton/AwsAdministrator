@@ -30,10 +30,10 @@ namespace IntegrationTest.Ec2
             var clusterName = "lexicon-cluster";
 
             var userData = @"#!/bin/bash
-echo ECS_CLUSTER=" + clusterName + " >> /etc/ecs/ecs.config;echo ECS_BACKEND_HOST= >> /etc/ecs/ecs.config;";
-
-//            var userData = @"#!/bin/bash
-//echo ECS_CLUSTER=" + clusterName + " >> /etc/ecs/ecs.config;";
+cat <<'EOF' >> /etc/ecs/ecs.config
+echo ECS_CLUSTER=lexicon-cluster
+echo ECS_BACKEND_HOST=
+EOF";
 
             var userDataBase64Encoded = base64EncodeService.Encode(userData);
 

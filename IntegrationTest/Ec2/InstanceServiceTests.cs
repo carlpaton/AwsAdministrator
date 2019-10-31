@@ -29,7 +29,7 @@ namespace IntegrationTest.Ec2
         public async Task RunInstancesAsync_should_run_the_given_launchTemplateId()
         {
             // Arrange
-            var launchTemplateId = "lt-09d0368cf444abeff";
+            var launchTemplateId = "lt-020c4cb1f8a18da95";
             var client = new EnvironmentVariables().CloudComputeClient();
             IInstanceService classUnderTest = new InstanceService(client);
 
