@@ -31,8 +31,8 @@ namespace IntegrationTest.Ec2
             IInternetGatewayService classUnderTest = new InternetGatewayService(client);
 
             // Act
-            var internetGatewayId = "igw-045502c2b6932babd";
-            var vpcId = "vpc-08e1953cac632841a";
+            var internetGatewayId = "igw-0fe7ec4711c6ff512";
+            var vpcId = "vpc-0207f5e6f8ccfb5d8";
             var response = await classUnderTest.AttachInternetGatewayAsync(internetGatewayId, vpcId);
 
             // Assert

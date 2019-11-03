@@ -12,7 +12,7 @@ namespace IntegrationTest.Ec2
         public async Task CreateSubnetAsync_should_create_and_return_subnet()
         {
             // Arrange
-            var vpcId = "vpc-08e1953cac632841a";
+            var vpcId = "vpc-0207f5e6f8ccfb5d8";
             var cidrBlock1 = "10.0.1.0/24";
             var cidrBlock2 = "10.0.0.0/24";
 

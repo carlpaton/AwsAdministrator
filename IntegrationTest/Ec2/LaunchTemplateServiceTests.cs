@@ -23,17 +23,14 @@ namespace IntegrationTest.Ec2
             var base64EncodeService = new Base64EncodeService();
 
             var imageId = Ec2Constants.AmiEcsLaunchTypeEc2;
-            var networkInterfaceId = "eni-0997d795c171fe409";
+            var networkInterfaceId = "eni-0b6642dfc8f656e7e";
             var arn = "arn:aws:iam::032668436735:instance-profile/ecsInstanceRole";
             var launchTemplateName = "CreatedFromSDK"; //LexiconServer;
             var keyName = "carl-key-pair";
             var clusterName = "lexicon-cluster";
 
             var userData = @"#!/bin/bash
-cat <<'EOF' >> /etc/ecs/ecs.config
-echo ECS_CLUSTER=lexicon-cluster
-echo ECS_BACKEND_HOST=
-EOF";
+echo ECS_CLUSTER=lexicon-cluster >> /etc/ecs/ecs.config;echo ECS_BACKEND_HOST= >> /etc/ecs/ecs.config;";
 
             var userDataBase64Encoded = base64EncodeService.Encode(userData);
 
