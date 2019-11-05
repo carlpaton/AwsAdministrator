@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AWSSDK.AutoScaling" Version="3.3.100.94" />
     <PackageReference Include="AWSSDK.EC2" Version="3.3.132" />
     <PackageReference Include="AWSSDK.ECR" Version="3.3.101.35" />
     <PackageReference Include="AWSSDK.ECS" Version="3.3.110.7" />

@@ -33,5 +33,12 @@ namespace Business.AmazonWebServices.Ec2
             var response = await _cloudComputeClient.DeleteVpcAsync(request);
             return response;
         }
+
+        public async Task<CreateDefaultVpcResponse> CreateDefaultVpcAsync()
+        {
+            var request = new CreateDefaultVpcRequest();
+            var response = await _cloudComputeClient.CreateDefaultVpcAsync(request);
+            return response;
+        }
     }
 }

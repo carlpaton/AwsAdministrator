@@ -1,19 +1,29 @@
 ### AWS Administrator
 AWS infrastructure administration tool. The code based steps below allow for the orchestration of an AWS ECS (Amazon Elastic Container Service) environment using EC2 (Amazon Elastic Cloud Compute) infrastructure.
 
+* https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html
+
 **Account**
 
-* https://portal.aws.amazon.com/billing/signup
+- https://portal.aws.amazon.com/billing/signup
 
 **User**
 
-* https://console.aws.amazon.com/iam/
+- https://console.aws.amazon.com/iam/
 
 **IAM (Identity and Access Management) role**
 
 For tasks using the EC2 launch type, you can create an IAM role that allows the agent to know which account it should register your container instances with. When you launch a container instance with the Amazon ECS-optimized AMI provided by Amazon using this role, the agent automatically registers the container instance into your default cluster. This role is referred to as the Amazon ECS container instance IAM role.
 
-* https://aws.amazon.com/iam/
+- https://aws.amazon.com/iam/
+
+### Auto Scaling
+
+CreateLaunchConfigurationAsync
+
+* https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-launch-configuration.html
+
+### EC2 (Elastic Compute Cloud)
 
 **Key Pair**
 
@@ -79,14 +89,9 @@ Create a Security Group Choose `HTTP`, `HTTPS`, `SSH` from the Type list, and ma
 * `IntegrationTest\Ec2\NetworkInterfaceServiceTests.cs`
   * `CreateNetworkInterfaceAsync_should_create_and_return_nic`
 
-**ECR (Elastic Container Registry)**
-
-* https://aws.amazon.com/ecr/
-* https://carlpaton.github.io/2019/09/aws-elastic-container-registry/
-
 **Task Definition**
 
-hoe
+Can use image from docker hub or ECR
 
 **Launch Template**
 
@@ -115,6 +120,8 @@ IyEvYmluL2Jhc2gKZWNobyBFQ1NfQ0xVU1RFUj1sZXhpY29uLWNsdXN0ZXIgPj4gL2V0Yy9lY3MvZWNz
 
 * https://aws.amazon.com/premiumsupport/knowledge-center/ecs-agent-disconnected/
 
+### ECS (Elastic Container Service)
+
 **Cluster**
 
 * `IntegrationTest\Ecs\ClusterServiceTests.cs`
@@ -132,7 +139,10 @@ List Container Instances
 aws ecs list-container-instances --cluster MyCluster
 ```
 
-### References
-
 * https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_AWSCLI_EC2.html
 * https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html
+
+### ECR (Elastic Container Registry)
+
+- https://aws.amazon.com/ecr/
+- https://carlpaton.github.io/2019/09/aws-elastic-container-registry/

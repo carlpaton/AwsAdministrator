@@ -24,5 +24,11 @@ namespace Business.AmazonWebServices.Ec2.Interface
         /// <param name="vpcId"></param>
         /// <returns></returns>
         Task<DeleteVpcResponse> DeleteVpcAsync(string vpcId);
+
+        /// <summary>
+        /// Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone.
+        /// </summary>
+        /// <returns></returns>
+        Task<CreateDefaultVpcResponse> CreateDefaultVpcAsync();
     }
 }

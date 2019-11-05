@@ -23,7 +23,7 @@ namespace IntegrationTest.Ec2
             var base64EncodeService = new Base64EncodeService();
 
             var imageId = Ec2Constants.AmiEcsLaunchTypeEc2;
-            var networkInterfaceId = "eni-0b6642dfc8f656e7e";
+            var networkInterfaceId = "eni-0a2e37a1f05e287db";
             var arn = "arn:aws:iam::032668436735:instance-profile/ecsInstanceRole";
             var launchTemplateName = "CreatedFromSDK"; //LexiconServer;
             var keyName = "carl-key-pair";

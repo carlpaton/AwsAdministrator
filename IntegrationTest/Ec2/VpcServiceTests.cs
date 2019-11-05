@@ -52,5 +52,20 @@ namespace IntegrationTest.Ec2
             // Assert
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
         }
+
+        [Test]
+        public async Task CreateDefaultVpcAsync_should_create_and_return_default_vpc()
+        {
+            // Arrange
+            var client = new EnvironmentVariables().CloudComputeClient();
+            IVpcService classUnderTest = new VpcService(client);
+
+            // Act
+            var response = await classUnderTest.CreateDefaultVpcAsync();
+
+            // Assert
+            Assert.IsTrue(response.Vpc != null);
+            Assert.IsTrue(response.Vpc.VpcId.Length > 1);
+        }
     }
 }
