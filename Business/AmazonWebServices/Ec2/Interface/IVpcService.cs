@@ -9,6 +9,8 @@ namespace Business.AmazonWebServices.Ec2.Interface
 
         /// <summary>
         /// AWS SKD will also create default `Security Group`, `Route Table`, `DHCP options sets` and `Network ACLs`
+        /// 
+        /// If you use this option instead of `CreateDefaultVpcAsync` you will need to manually create allocate an elastic IP and associate it - see IElasticIpService
         /// </summary>
         /// <param name="cidrBlock">Example: 10.0.0.0/16</param>
         /// <returns></returns>
