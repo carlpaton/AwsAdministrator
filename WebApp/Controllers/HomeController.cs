@@ -11,14 +11,14 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IAmazonECS _amazonECSClient;
-        private readonly IAmazonEC2 _amazonEC2Client;
+        private readonly IAmazonEC2 _cloudComputeClient;
         private readonly IAmazonECR _amazonECRClient;
         private readonly IKeyService _keyService;
 
-        public HomeController(IAmazonECS amazonECSClient, IAmazonEC2 amazonEC2Client, IAmazonECR amazonECRClient, IKeyService keyService) 
+        public HomeController(IAmazonECS amazonECSClient, IAmazonEC2 cloudComputeClient, IAmazonECR amazonECRClient, IKeyService keyService) 
         {
             _amazonECSClient = amazonECSClient;
-            _amazonEC2Client = amazonEC2Client;
+            _cloudComputeClient = cloudComputeClient;
             _amazonECRClient = amazonECRClient;
             _keyService = keyService;
         }
@@ -46,8 +46,8 @@ namespace WebApp.Controllers
                 },
                 AmazonEC2ClientModel = new AmazonEC2ClientModel()
                 {
-                    AuthenticationServiceName = _amazonEC2Client.Config.AuthenticationServiceName,
-                    RegionEndpointSystemName = _amazonEC2Client.Config.RegionEndpoint.SystemName
+                    AuthenticationServiceName = _cloudComputeClient.Config.AuthenticationServiceName,
+                    RegionEndpointSystemName = _cloudComputeClient.Config.RegionEndpoint.SystemName
                 },
                 AmazonECRClientModel = new AmazonECRClientModel()
                 {

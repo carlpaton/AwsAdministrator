@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Models
 {
-    public class Ec2Model
+    public class DescribeVpcModel
     {
         public string VpcId { get; set; }
     }

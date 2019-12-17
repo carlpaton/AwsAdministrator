@@ -29,7 +29,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Client">Client</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Client">Client</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">VPC</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Vpc" asp-action="Describe">Describe</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

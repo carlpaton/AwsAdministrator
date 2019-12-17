@@ -1,0 +1,31 @@
+﻿@model WebApp.Models.DescribeVpcModel
+
+@{
+    ViewData["Title"] = "Amazon Virtual Private Cloud (VPC)";
+}
+
+<h1>VPC</h1>
+<p>
+    Generally your account will only have one `default` VPC.
+</p>
+<div>
+    <h4>Amazon Virtual Private Cloud</h4>
+    <hr />
+    @if (Model.VpcId != null)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.VpcId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.VpcId)
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">
+            No default VPC exists!
+        </div>
+    }
+</div>
