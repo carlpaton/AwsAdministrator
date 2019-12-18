@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApp.Domain.Mappers;
+using WebApp.Domain.Mappers.Interface;
 using WebApp.Domain.Services;
 using WebApp.Domain.Services.Interface;
 
@@ -55,6 +57,7 @@ namespace WebApp
             services.AddSingleton<IAmazonECR, AmazonECRClient>();
             services.AddSingleton<IVpcService>(vpcService);
             services.AddSingleton<ISubnetService>(subnetService);
+            services.AddSingleton<IDescribeVpcModelMapper, DescribeVpcModelMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
