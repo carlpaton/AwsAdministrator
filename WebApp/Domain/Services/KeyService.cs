@@ -1,14 +1,14 @@
 ﻿using System;
-using WebApp.Common.Interface;
+using WebApp.Domain.Services.Interface;
 
-namespace WebApp.Common
+namespace WebApp.Domain.Services
 {
     public class KeyService : IKeyService
     {
         private readonly string _awsAccessKeyId;
         private readonly string _awsSecretAccessKey;
 
-        public KeyService(string awsAccessKeyId, string awsSecretAccessKey) 
+        public KeyService(string awsAccessKeyId, string awsSecretAccessKey)
         {
             _awsAccessKeyId = awsAccessKeyId;
             _awsSecretAccessKey = awsSecretAccessKey;

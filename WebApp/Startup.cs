@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApp.Common;
-using WebApp.Common.Interface;
+using WebApp.Domain.Services;
+using WebApp.Domain.Services.Interface;
 
 namespace WebApp
 {

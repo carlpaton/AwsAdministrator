@@ -3,7 +3,7 @@ using Amazon.EC2;
 using Amazon.ECR;
 using Amazon.ECS;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Common.Interface;
+using WebApp.Domain.Services.Interface;
 using WebApp.Models;
 
 namespace WebApp.Controllers

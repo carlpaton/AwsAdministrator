@@ -1,4 +1,4 @@
-﻿namespace WebApp.Common.Interface
+﻿namespace WebApp.Domain.Services.Interface
 {
     /// <summary>
     /// By default this is read from `C:\Users\[USERNAME]\.aws\credentials` which is what AWS CLI is using.
