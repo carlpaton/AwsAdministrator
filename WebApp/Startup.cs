@@ -46,6 +46,7 @@ namespace WebApp
 
             // Services
             var vpcService = new VpcService(cloudComputeClient);
+            var subnetService = new SubnetService(cloudComputeClient);
 
             // All the DI's <3
             services.AddSingleton<IKeyService>(keyService);
@@ -53,6 +54,7 @@ namespace WebApp
             services.AddSingleton<IAmazonECS, AmazonECSClient>();  
             services.AddSingleton<IAmazonECR, AmazonECRClient>();
             services.AddSingleton<IVpcService>(vpcService);
+            services.AddSingleton<ISubnetService>(subnetService);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

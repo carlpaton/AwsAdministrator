@@ -11,10 +11,12 @@ namespace WebApp.Controllers
     public class VpcController : Controller
     {
         private readonly IVpcService _vpcService;
+        private readonly ISubnetService _subnetService;
 
-        public VpcController(IVpcService vpcService)
+        public VpcController(IVpcService vpcService, ISubnetService subnetService)
         {
             _vpcService = vpcService;
+            _subnetService = subnetService;
         }
 
         public async Task<IActionResult> Describe()
@@ -24,7 +26,16 @@ namespace WebApp.Controllers
             var firstVpc = describeVpcsResponse.Vpcs.Count > 0 
                 ? describeVpcsResponse.Vpcs.Where(vpc => vpc.IsDefault).First() 
                 : new Amazon.EC2.Model.Vpc();
-            
+
+            var describeSubnetsResponse = await _subnetService.DescribeSubnetsAsync();
+            foreach (var subnet in describeSubnetsResponse.Subnets)
+            {
+                viewModel.Subnets.Add(new SubnetModel() 
+                { 
+                    SubnetId = subnet.SubnetId
+                });
+            }
+
             viewModel.VpcId = firstVpc.VpcId;
             return View(viewModel);
         }
