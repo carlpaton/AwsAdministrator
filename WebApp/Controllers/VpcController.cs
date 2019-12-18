@@ -1,5 +1,7 @@
-﻿using Amazon.EC2;
+﻿using Business.AmazonWebServices.Ec2.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
@@ -8,23 +10,55 @@ namespace WebApp.Controllers
 {
     public class VpcController : Controller
     {
-        private readonly IAmazonEC2 _cloudComputeClient;
+        private readonly IVpcService _vpcService;
 
-        public VpcController(IAmazonEC2 cloudComputeClient)
+        public VpcController(IVpcService vpcService)
         {
-            _cloudComputeClient = cloudComputeClient;
+            _vpcService = vpcService;
         }
 
         public async Task<IActionResult> Describe()
         {
             var viewModel = new DescribeVpcModel();
-            var describeVpcsResponse = await _cloudComputeClient.DescribeVpcsAsync();
+            var describeVpcsResponse = await _vpcService.DescribeVpcsAsync();
             var firstVpc = describeVpcsResponse.Vpcs.Count > 0 
                 ? describeVpcsResponse.Vpcs.Where(vpc => vpc.IsDefault).First() 
                 : new Amazon.EC2.Model.Vpc();
             
             viewModel.VpcId = firstVpc.VpcId;
             return View(viewModel);
+        }
+
+        // GET: Vpc/CreateDefault
+        public ActionResult CreateDefault()
+        {
+            var viewModel = new CreateDefaultVpcModel();
+            return View(viewModel);
+        }
+
+        // POST: Vpc/CreateDefault
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateDefault(IFormCollection collection)
+        {
+            try
+            {
+                var createDefaultVpcResponse = await _vpcService.CreateDefaultVpcAsync();
+                var viewModel = new CreateDefaultVpcModel
+                {
+                    AlertPrimary = $"Default VPC created. VpcId={createDefaultVpcResponse.Vpc.VpcId}"
+                };
+
+                return View();
+            }
+            catch(Exception ex)
+            {
+                var viewModel = new CreateDefaultVpcModel
+                {
+                    AlertPrimary = ex.Message
+                };
+                return View(viewModel);
+            }
         }
     }
 }

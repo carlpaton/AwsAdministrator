@@ -1,6 +1,8 @@
 ﻿using Amazon.EC2;
 using Amazon.ECR;
 using Amazon.ECS;
+using Business.AmazonWebServices.Ec2;
+using Business.AmazonWebServices.Ec2.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,11 +40,19 @@ namespace WebApp
             var awsSecretAccessKey = Configuration.GetSection("AwsSecretAccessKey").Value;
             var keyService = new KeyService(awsAccessKeyId, awsSecretAccessKey);
 
+            // Amazon clients
+            // KeyService can be used to pass `AwsAccessKeyId` and `AwsSecretAccessKey`
+            var cloudComputeClient = new AmazonEC2Client();
+
+            // Services
+            var vpcService = new VpcService(cloudComputeClient);
+
             // All the DI's <3
-            services.AddSingleton<IKeyService>(keyService);          
-            services.AddSingleton<IAmazonECS, AmazonECSClient>(); // KeyService can be used to pass `AwsAccessKeyId` and `AwsSecretAccessKey` 
-            services.AddSingleton<IAmazonEC2, AmazonEC2Client>();
+            services.AddSingleton<IKeyService>(keyService);
+            services.AddSingleton<IAmazonEC2>(cloudComputeClient);
+            services.AddSingleton<IAmazonECS, AmazonECSClient>();  
             services.AddSingleton<IAmazonECR, AmazonECRClient>();
+            services.AddSingleton<IVpcService>(vpcService);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
