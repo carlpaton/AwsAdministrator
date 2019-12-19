@@ -7,13 +7,16 @@ namespace WebApp.Models
     {
         public DescribeVpcModel() 
         {
-            Subnets = new List<SubnetModel>();
+            Subnets = new List<DescribeSubnetModel>();
+            RouteTables = new List<DescribeRouteTableModel>();
         }
 
         [Display(Name = "Vpc Id")]
         public string VpcId { get; set; }
-        public List<SubnetModel> Subnets { get; set; }
-}
+
+        public List<DescribeSubnetModel> Subnets { get; set; }
+        public List<DescribeRouteTableModel> RouteTables { get; set; }
+    }
 
     public class CreateDefaultVpcModel
     {

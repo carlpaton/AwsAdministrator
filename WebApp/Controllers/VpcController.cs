@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Domain.Mappers.Interface;
 using WebApp.Models;
@@ -13,20 +12,33 @@ namespace WebApp.Controllers
     {
         private readonly IVpcService _vpcService;
         private readonly ISubnetService _subnetService;
-        private readonly IDescribeVpcModelMapper _describeVpcModelMapper;
+        private readonly IRouteTableService _routeTableService;
 
-        public VpcController(IVpcService vpcService, ISubnetService subnetService, IDescribeVpcModelMapper describeVpcModelMapper)
+        private readonly IDescribeVpcMapper _describeVpcMapper;
+        private readonly IDescribeSubnetMapper _describeSubnetMapper;
+        private readonly IDescribeRouteTableMapper _describeRouteTableMapper;
+
+        public VpcController(IVpcService vpcService, ISubnetService subnetService, IRouteTableService routeTableService,
+            IDescribeVpcMapper describeVpcMapper, IDescribeSubnetMapper describeSubnetMapper, IDescribeRouteTableMapper describeRouteTableMapper)
         {
             _vpcService = vpcService;
             _subnetService = subnetService;
-            _describeVpcModelMapper = describeVpcModelMapper;
+            _routeTableService = routeTableService;
+
+            _describeVpcMapper = describeVpcMapper;
+            _describeSubnetMapper = describeSubnetMapper;
+            _describeRouteTableMapper = describeRouteTableMapper;
         }
 
         public async Task<IActionResult> Describe()
         {
             var describeVpcsResponse = await _vpcService.DescribeVpcsAsync();
             var describeSubnetsResponse = await _subnetService.DescribeSubnetsAsync();
-            var viewModel = _describeVpcModelMapper.MapForDescribe(describeVpcsResponse, describeSubnetsResponse);
+            var describeRouteTablesResponse = await _routeTableService.DescribeRouteTablesAsync();
+
+            var viewModel = _describeVpcMapper.MapForDescribe(describeVpcsResponse);
+            viewModel.Subnets = _describeSubnetMapper.MapForDescribe(describeSubnetsResponse);
+            viewModel.RouteTables = _describeRouteTableMapper.MapForDescribe(describeRouteTablesResponse);
 
             return View(viewModel);
         }

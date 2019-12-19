@@ -5,9 +5,9 @@ using WebApp.Models;
 
 namespace WebApp.Domain.Mappers
 {
-    public class DescribeVpcModelMapper : IDescribeVpcModelMapper
+    public class DescribeVpcMapper : IDescribeVpcMapper
     {
-        public DescribeVpcModel MapForDescribe(DescribeVpcsResponse describeVpcsResponse, DescribeSubnetsResponse describeSubnetsResponse) 
+        public DescribeVpcModel MapForDescribe(DescribeVpcsResponse describeVpcsResponse) 
         {
             var viewModel = new DescribeVpcModel();
 
@@ -16,14 +16,6 @@ namespace WebApp.Domain.Mappers
                 : new Amazon.EC2.Model.Vpc();
 
             viewModel.VpcId = firstVpc.VpcId;
-
-            foreach (var subnet in describeSubnetsResponse.Subnets)
-            {
-                viewModel.Subnets.Add(new SubnetModel()
-                {
-                    SubnetId = subnet.SubnetId
-                });
-            }
 
             return viewModel;
         }

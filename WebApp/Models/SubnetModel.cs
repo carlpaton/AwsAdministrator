@@ -2,7 +2,7 @@
 
 namespace WebApp.Models
 {
-    public class SubnetModel
+    public class DescribeSubnetModel
     {
         [Display(Name = "Subnet Id")]
         public string SubnetId { get; set; }

@@ -45,19 +45,23 @@ namespace WebApp
             // Amazon clients
             // KeyService can be used to pass `AwsAccessKeyId` and `AwsSecretAccessKey`
             var cloudComputeClient = new AmazonEC2Client();
-
-            // Services
-            var vpcService = new VpcService(cloudComputeClient);
-            var subnetService = new SubnetService(cloudComputeClient);
-
-            // All the DI's <3
             services.AddSingleton<IKeyService>(keyService);
             services.AddSingleton<IAmazonEC2>(cloudComputeClient);
             services.AddSingleton<IAmazonECS, AmazonECSClient>();  
             services.AddSingleton<IAmazonECR, AmazonECRClient>();
+
+            // Services
+            var vpcService = new VpcService(cloudComputeClient);
+            var subnetService = new SubnetService(cloudComputeClient);
+            var routeTableService = new RouteTableService(cloudComputeClient);
             services.AddSingleton<IVpcService>(vpcService);
             services.AddSingleton<ISubnetService>(subnetService);
-            services.AddSingleton<IDescribeVpcModelMapper, DescribeVpcModelMapper>();
+            services.AddSingleton<IRouteTableService>(routeTableService);
+
+            // Mappers
+            services.AddSingleton<IDescribeVpcMapper, DescribeVpcMapper>();
+            services.AddSingleton<IDescribeSubnetMapper, DescribeSubnetMapper>();
+            services.AddSingleton<IDescribeRouteTableMapper, DescribeRouteTableMapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

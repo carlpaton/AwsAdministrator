@@ -15,25 +15,15 @@
     {
         <dl class="row">
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.VpcId)
+                <label asp-for="VpcId"></label>
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.VpcId)
             </dd>
         </dl>
 
-        <h4>Subnets</h4>
-        @foreach (var subnet in Model.Subnets)
-        {
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => subnet.SubnetId)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => subnet.SubnetId)
-                </dd>
-            </dl>
-        }
+        <partial name="~/Views/Subnet/_Describe.cshtml" model="ViewData.Model.Subnets" />
+        <partial name="~/Views/RouteTable/_Describe.cshtml" model="ViewData.Model.RouteTables" />
     }
     else
     {
