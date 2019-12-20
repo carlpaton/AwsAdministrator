@@ -9,6 +9,10 @@ namespace WebApp.Models
         {
             Subnets = new List<DescribeSubnetModel>();
             RouteTables = new List<DescribeRouteTableModel>();
+            InternetGateways = new List<DescribeInternetGatewayModel>();
+            DhcpOptionsSets = new List<DescribeDhcpOptionsSetModel>();
+            NetworkAcls = new List<DescribeNetworkAclsModel>();
+            SecurityGroups = new List<DescribeSecurityGroupModel>();
         }
 
         [Display(Name = "Vpc Id")]
@@ -16,6 +20,10 @@ namespace WebApp.Models
 
         public List<DescribeSubnetModel> Subnets { get; set; }
         public List<DescribeRouteTableModel> RouteTables { get; set; }
+        public List<DescribeInternetGatewayModel> InternetGateways { get; set; }
+        public List<DescribeDhcpOptionsSetModel> DhcpOptionsSets { get; set; }
+        public List<DescribeNetworkAclsModel> NetworkAcls { get; set; }
+        public List<DescribeSecurityGroupModel> SecurityGroups { get; set; }
     }
 
     public class CreateDefaultVpcModel
