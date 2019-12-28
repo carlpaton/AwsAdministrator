@@ -21,6 +21,38 @@
                 @Html.DisplayFor(model => model.VpcId)
             </dd>
         </dl>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label asp-for="State"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.State)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label asp-for="CidrBlock"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CidrBlock)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label asp-for="Tenancy"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tenancy)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">
+                <label asp-for="OwnerId"></label>
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OwnerId)
+            </dd>
+        </dl>
 
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item">

@@ -18,6 +18,15 @@ namespace WebApp.Models
         [Display(Name = "Vpc Id")]
         public string VpcId { get; set; }
 
+        [Display(Name = "IPv4 CidrBlock")]
+        public string CidrBlock { get; set; }
+
+        [Display(Name = "Owner")]
+        public string OwnerId { get; set; }
+
+        public string State { get; set; }
+        public string Tenancy { get; set; }
+
         public List<DescribeSubnetModel> Subnets { get; set; }
         public List<DescribeRouteTableModel> RouteTables { get; set; }
         public List<DescribeInternetGatewayModel> InternetGateways { get; set; }

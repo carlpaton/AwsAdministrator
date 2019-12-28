@@ -16,6 +16,10 @@ namespace WebApp.Domain.Mappers
                 : new Amazon.EC2.Model.Vpc();
 
             viewModel.VpcId = firstVpc.VpcId;
+            viewModel.State = firstVpc.State.ToString();
+            viewModel.CidrBlock = firstVpc.CidrBlock;
+            viewModel.Tenancy = firstVpc.InstanceTenancy.ToString();
+            viewModel.OwnerId = firstVpc.OwnerId;
 
             return viewModel;
         }
