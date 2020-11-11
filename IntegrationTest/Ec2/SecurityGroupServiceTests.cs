@@ -22,7 +22,6 @@ namespace IntegrationTest.Ec2
             Assert.IsTrue(response.SecurityGroups.Count >= 1);
         }
 
-        // TODO
-        // grant 80, 22, 1433
+        // TODO - SecurityGroupServiceTests, grant 80, 22, 1433
     }
 }

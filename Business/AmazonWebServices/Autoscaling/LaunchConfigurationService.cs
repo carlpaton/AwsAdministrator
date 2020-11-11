@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Business.AmazonWebServices.Autoscaling
 {
-    /* TODO
+    /* TODO - LaunchConfigurationService interface and mapper
      * 
      * LaunchConfigurationService needs an interface
      * CreateLaunchConfigurationRequest needs a mapper
