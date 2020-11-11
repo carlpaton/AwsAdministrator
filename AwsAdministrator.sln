@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{7B412824-FBD9-46CF-93C2-319AEB35E3AC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{BCA6C3E6-9BF3-4915-9CC6-36651A0E8200}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{46D587FE-84A2-4246-AA10-E181646A6AE3}"
@@ -13,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTest", "Integrat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{CA2E735B-2408-4028-951B-8029F1ECE5C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{2FF8F34C-E5EF-45C0-A48D-46BC87E2DAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{2FF8F34C-E5EF-45C0-A48D-46BC87E2DAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7B412824-FBD9-46CF-93C2-319AEB35E3AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B412824-FBD9-46CF-93C2-319AEB35E3AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B412824-FBD9-46CF-93C2-319AEB35E3AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B412824-FBD9-46CF-93C2-319AEB35E3AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BCA6C3E6-9BF3-4915-9CC6-36651A0E8200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BCA6C3E6-9BF3-4915-9CC6-36651A0E8200}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCA6C3E6-9BF3-4915-9CC6-36651A0E8200}.Release|Any CPU.ActiveCfg = Release|Any CPU
