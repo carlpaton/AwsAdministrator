@@ -146,3 +146,8 @@ aws ecs list-container-instances --cluster MyCluster
 
 - https://aws.amazon.com/ecr/
 - https://carlpaton.github.io/2019/09/aws-elastic-container-registry/
+
+### S3 (Simple Storage Service)
+
+- https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+- https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/S3/MS3GetPreSignedURLGetPreSignedUrlRequest.html
