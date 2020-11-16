@@ -14,16 +14,16 @@ namespace Business.AmazonWebServices.S3
             _s3Client = s3Client;
         }
 
-        public async Task<GetObjectResponse> GetObjectAsync(string bucketName, string key)
+        public async Task<ListBucketsResponse> ListBucketsAsync()
         {
-            var request = new GetObjectRequest()
-            {
-                BucketName = bucketName,
-                Key = key,
-            };
+            return await _s3Client
+                .ListBucketsAsync();
+        }
 
-            var response = await _s3Client.GetObjectAsync(request);
-            return response;
+        public async Task<PutBucketResponse> PutBucketAsync(string bucketName)
+        {
+            return await _s3Client
+                .PutBucketAsync(bucketName);
         }
     }
 }

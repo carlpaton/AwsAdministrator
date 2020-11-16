@@ -5,16 +5,22 @@ namespace Business.AmazonWebServices.S3.Interface
 {
     public interface IBucketService
     {
-        /* TODO - Implement bucket service contracts
+        /* TODO - Implement
          *
-         * GetPreSignedURL
-         * GetObjectMetadata
-         * ListBuckets
-         * ListObjects
-         * PutBucket
-         * PutObject
+         * DeleteBucketAsync
          */
 
-        Task<GetObjectResponse> GetObjectAsync(string bucketName, string key);
+        /// <summary>
+        /// Creates the given bucket
+        /// </summary>
+        /// <param name="bucketName">Globally unique bucket name</param>
+        /// <returns></returns>
+        Task<PutBucketResponse> PutBucketAsync(string bucketName);
+
+        /// <summary>
+        /// Gets a list of buckets for the authenticated user
+        /// </summary>
+        /// <returns></returns>
+        Task<ListBucketsResponse> ListBucketsAsync();
     }
 }

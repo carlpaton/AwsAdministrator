@@ -13,4 +13,8 @@
     <PackageReference Include="AWSSDK.S3" Version="3.5.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AmazonWebServices\DynamoDB\" />
+  </ItemGroup>
+
 </Project>
