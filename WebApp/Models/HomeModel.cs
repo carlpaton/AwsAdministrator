@@ -7,8 +7,6 @@ namespace WebApp.Models
         public AmazonECSClientModel AmazonECSClientModel { get; set; }
         public AmazonEC2ClientModel AmazonEC2ClientModel { get; set; }
         public AmazonECRClientModel AmazonECRClientModel { get; set; }
-        public string AwsAccessKeyId { get; set; }
-        public string AwsSecretAccessKey { get; set; }
     }
 
     public class AmazonECSClientModel : BaseModel

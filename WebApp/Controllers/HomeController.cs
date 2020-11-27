@@ -37,8 +37,6 @@ namespace WebApp.Controllers
         {
             var viewModel = new ClientModel
             {
-                AwsAccessKeyId = _keyService.GetAwsAccessKeyId(),
-                AwsSecretAccessKey = _keyService.GetAwsSecretAccessKey(),
                 AmazonECSClientModel = new AmazonECSClientModel() 
                 {
                     AuthenticationServiceName = _amazonECSClient.Config.AuthenticationServiceName,
