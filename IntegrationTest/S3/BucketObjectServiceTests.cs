@@ -15,6 +15,7 @@ namespace IntegrationTest.S3
     {
         private const string BucketName = "bucket-280e70fe-ee15-46e1-99e8-ba5b46669e2a";
         private const string FileName = "DummyModel.json";
+        private const string FileNameWithMeta = "DummyModel-WithMeta.json";
 
         private IJsonSerializationService _jsonSerializationService;
         private IAmazonS3 _s3BucketClient;
@@ -33,16 +34,16 @@ namespace IntegrationTest.S3
             IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
             var dummyModel = new DummyModel()
             {
-                Age = 42,
+                Age = 84,
                 CreatedDate = DateTime.Now,
-                FullName = "Joe Blogs",
+                FullName = "Foo Bar",
                 Id = Guid.NewGuid()
             };
             var contentBody = _jsonSerializationService.SerializeObject(dummyModel);
 
             // Act
             var response = await classUnderTest
-                .PutTextObjectAsync(BucketName, FileName, contentBody);
+                .PutTextObjectAsync(BucketName, FileNameWithMeta, contentBody);
 
             // Assert
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
@@ -66,6 +67,34 @@ namespace IntegrationTest.S3
             // Assert
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
             Assert.AreEqual(FileName, response.Key);
+        }
+
+        [Test]
+        public async Task GetPreSignedURL_should_get_url()
+        {
+            // Arrange
+            IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
+
+            // Act
+            var actual = classUnderTest.GetPreSignedURL(BucketName, FileName, 1);
+
+            // Assert
+            StringAssert.Contains(BucketName, actual);
+            StringAssert.Contains(FileName, actual);
+        }
+
+        [Test]
+        public async Task GetObjectMetadataAsync_should_get_metadata()
+        {
+            // TODO - this is not working, I dont think the TagSet I used in `PutTextObjectAsync` worked. sad.
+
+            // Arrange
+            IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
+
+            // Act
+            var actual = classUnderTest.GetObjectMetadataAsync(BucketName, FileName);
+
+            // Assert
         }
     }
 }

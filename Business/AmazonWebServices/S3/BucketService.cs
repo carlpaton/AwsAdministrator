@@ -14,6 +14,12 @@ namespace Business.AmazonWebServices.S3
             _s3Client = s3Client;
         }
 
+        public async Task<DeleteBucketResponse> DeleteBucketAsync(string bucketName)
+        {
+            return await _s3Client
+                .DeleteBucketAsync(bucketName);
+        }
+
         public async Task<ListBucketsResponse> ListBucketsAsync()
         {
             return await _s3Client

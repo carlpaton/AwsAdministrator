@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Amazon.S3;
 using Amazon.S3.Model;
 using Business.AmazonWebServices.S3.Interface;
@@ -33,10 +34,33 @@ namespace Business.AmazonWebServices.S3
                 BucketName = bucketName,
                 Key = key,
                 ContentBody = contentBody,
+                //TagSet = new List<Tag>{
+                //        new Tag { Key = "Keyx1", Value = "Value1"},
+                //        new Tag { Key = "Keyx2", Value = "Value2" }
+                //    }
             };
 
             return await _s3Client
                 .PutObjectAsync(request);
+        }
+
+        public string GetPreSignedURL(string bucketName, string key, double expireInHours)
+        {
+            var request = new GetPreSignedUrlRequest()
+            {
+                BucketName = bucketName,
+                Key = key,
+                Expires = DateTime.UtcNow.AddHours(expireInHours)
+            };
+
+            return _s3Client
+                .GetPreSignedURL(request);
+        }
+
+        public Task<GetObjectMetadataResponse> GetObjectMetadataAsync(string bucketName, string key)
+        {
+            return _s3Client
+                .GetObjectMetadataAsync(bucketName, key);
         }
     }
 }

@@ -7,14 +7,22 @@ namespace Business.AmazonWebServices.S3.Interface
     {
         /* TODO - implement
          *
-         * GetPreSignedURL
          * GetObjectMetadata
          * ListObjects
          */
 
+        /// <summary>
+        /// Create a signed URL allowing access to a resource that would usually require authentication.
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="key"></param>
+        /// <param name="expireInHours"></param>
+        /// <returns></returns>
+        string GetPreSignedURL(string bucketName, string key, double expireInHours);
 
         /// <summary>
-        /// Put the plaintext object in the S3 bucket
+        /// Put the plaintext object in the S3 bucket.
+        /// The content type will be set to 'text/plain'.
         /// </summary>
         /// <param name="bucketName"></param>
         /// <param name="key"></param>
@@ -29,5 +37,13 @@ namespace Business.AmazonWebServices.S3.Interface
         /// <param name="key"></param>
         /// <returns></returns>
         Task<GetObjectResponse> GetObjectAsync(string bucketName, string key);
+
+        /// <summary>
+        /// Retrieves metadata from an object without returning the object itself
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<GetObjectMetadataResponse> GetObjectMetadataAsync(string bucketName, string key);
     }
 }

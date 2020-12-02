@@ -46,5 +46,19 @@ namespace IntegrationTest.S3
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
             Assert.IsTrue(response.Buckets.Count > 0);
         }
+
+        [Test]
+        public async Task DeleteBucketAsync_deletes_bucket()
+        {
+            // Arrange
+            IBucketService classUnderTest = new BucketService(_s3BucketClient);
+
+            // Act
+            var response = await classUnderTest
+                .DeleteBucketAsync(BucketName);
+
+            // Assert
+            Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
+        }
     }
 }
