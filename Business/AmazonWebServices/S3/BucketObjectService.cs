@@ -34,12 +34,14 @@ namespace Business.AmazonWebServices.S3
                 BucketName = bucketName,
                 Key = key,
                 ContentBody = contentBody,
-                //TagSet = new List<Tag>{
-                //        new Tag { Key = "Keyx1", Value = "Value1"},
-                //        new Tag { Key = "Keyx2", Value = "Value2" }
-                //    }
             };
 
+            return await _s3Client
+                .PutObjectAsync(request);
+        }
+
+        public async Task<PutObjectResponse> PutTextObjectAsync(PutObjectRequest request)
+        {
             return await _s3Client
                 .PutObjectAsync(request);
         }
@@ -57,10 +59,34 @@ namespace Business.AmazonWebServices.S3
                 .GetPreSignedURL(request);
         }
 
-        public Task<GetObjectMetadataResponse> GetObjectMetadataAsync(string bucketName, string key)
+        public async Task<GetObjectMetadataResponse> GetObjectMetadataAsync(string bucketName, string key)
         {
-            return _s3Client
+            return await _s3Client
                 .GetObjectMetadataAsync(bucketName, key);
+        }
+
+        public async Task<DeleteObjectResponse> DeleteObjectAsync(string bucketName, string key)
+        {
+            return await _s3Client
+                .DeleteObjectAsync(bucketName, key);
+        }
+
+        public async Task<GetObjectTaggingResponse> GetObjectTaggingAsync(string bucketName, string key)
+        {
+            var request = new GetObjectTaggingRequest()
+            {
+                BucketName = bucketName,
+                Key = key
+            };
+
+            return await _s3Client
+                .GetObjectTaggingAsync(request);
+        }
+
+        public async Task<ListObjectsResponse> ListObjectsAsync(string bucketName)
+        {
+            return await _s3Client
+                .ListObjectsAsync(bucketName);
         }
     }
 }

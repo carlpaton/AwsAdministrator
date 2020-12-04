@@ -5,12 +5,6 @@ namespace Business.AmazonWebServices.S3.Interface
 {
     public interface IBucketObjectService
     {
-        /* TODO - implement
-         *
-         * GetObjectMetadata
-         * ListObjects
-         */
-
         /// <summary>
         /// Create a signed URL allowing access to a resource that would usually require authentication.
         /// </summary>
@@ -31,6 +25,21 @@ namespace Business.AmazonWebServices.S3.Interface
         Task<PutObjectResponse> PutTextObjectAsync(string bucketName, string key, string contentBody);
 
         /// <summary>
+        /// Use `PutObjectRequestBuilder` to create the request object
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        Task<PutObjectResponse> PutTextObjectAsync(PutObjectRequest request);
+
+        /// <summary>
+        /// Deletes the given object (key)
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<DeleteObjectResponse> DeleteObjectAsync(string bucketName, string key);
+
+        /// <summary>
         /// Get the value of the object on the bucket by reading `response.ResponseStream`
         /// </summary>
         /// <param name="bucketName"></param>
@@ -39,11 +48,27 @@ namespace Business.AmazonWebServices.S3.Interface
         Task<GetObjectResponse> GetObjectAsync(string bucketName, string key);
 
         /// <summary>
-        /// Retrieves metadata from an object without returning the object itself
+        /// Retrieves metadata from an object without returning the object itself.
+        /// I think this is used as HTTP header data.
         /// </summary>
         /// <param name="bucketName"></param>
         /// <param name="key"></param>
         /// <returns></returns>
         Task<GetObjectMetadataResponse> GetObjectMetadataAsync(string bucketName, string key);
+
+        /// <summary>
+        /// Gets the tags as `response.Tagging`
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        Task<GetObjectTaggingResponse> GetObjectTaggingAsync(string bucketName, string key);
+
+        /// <summary>
+        /// Gets data about the objects as `response.S3Objects` where `.Key` is the filename
+        /// </summary>
+        /// <param name="bucketName"></param>
+        /// <returns></returns>
+        Task<ListObjectsResponse> ListObjectsAsync(string bucketName);
     }
 }

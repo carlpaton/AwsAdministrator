@@ -1,5 +1,7 @@
 # AWS Administrator
-AWS infrastructure administration tool uses the [AWS SDK for .NET Version 3](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html).
+AWS infrastructure administration tool uses the [AWS SDK for .NET Version 3](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html)
+
+These services are a proof of concept facade. This means they simply wrap the massive AWS SDK and group the responsibilities in a cohesive manner. The methods return ASW SDK types where your production code would be returning your own entities for your application.
 
 - [Auto Scaling](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Autoscaling)
 - [EC2 (Elastic Compute Cloud)](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Ec2)
