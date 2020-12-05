@@ -10,6 +10,7 @@ using IntegrationTest.Plumbing;
 using System;
 using Business.AmazonWebServices.S3.Builder;
 using System.Linq;
+using Amazon.S3.Model;
 
 namespace IntegrationTest.S3
 {
@@ -19,6 +20,7 @@ namespace IntegrationTest.S3
         private const string FileName = "DummyModel.json";
         private const string FileNameWithTag = "WithTag-DummyModel.json";
         private const string FileNameWithMetadata = "WithMetadata-DummyModel.json";
+        private const string FileNameBinary = "Binary-DummyModel.txt";
 
         private IJsonSerializationService _jsonSerializationService;
         private IAmazonS3 _s3BucketClient;
@@ -53,7 +55,7 @@ namespace IntegrationTest.S3
         }
 
         [Test]
-        public async Task PutTextObjectAsync_should_create_object_with_tags()
+        public async Task PutObjectAsync_should_create_object_with_tags()
         {
             // Arrange
             IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
@@ -72,14 +74,14 @@ namespace IntegrationTest.S3
 
             // Act
             var response = await classUnderTest
-                .PutTextObjectAsync(putObjectRequest.Create());
+                .PutObjectAsync(putObjectRequest.Create());
 
             // Assert
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
         }
 
         [Test]
-        public async Task PutTextObjectAsync_should_create_object_with_metadata()
+        public async Task PutObjectAsync_should_create_object_with_metadata()
         {
             // Arrange
             IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
@@ -98,7 +100,37 @@ namespace IntegrationTest.S3
 
             // Act
             var response = await classUnderTest
-                .PutTextObjectAsync(putObjectRequest.Create());
+                .PutObjectAsync(putObjectRequest.Create());
+
+            // Assert
+            Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
+        }
+
+        [Test]
+        public async Task PutObjectAsync_should_create_object()
+        {
+            // TODO - use the builder, I think take `contentBody` out of the ctr
+            // TODO - PDF file?
+            var filePath = @"C:\Dev\AwsAdministrator\Business\AmazonWebServices\S3\" + FileNameBinary;
+
+            IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
+            var contentType = "text/plain";
+            var content = File.ReadAllBytes(filePath);
+
+            // TODO - get content type from extension? 
+            var fileInfo = new FileInfo(filePath);
+            //contentType = fileInfo.
+
+            var request = new PutObjectRequest
+            {
+                BucketName = BucketName,
+                Key = FileNameBinary,
+                ContentType = contentType,
+                InputStream = new MemoryStream(content),
+            };
+
+            var response = await classUnderTest
+                .PutObjectAsync(request);
 
             // Assert
             Assert.IsTrue(response.HttpStatusCode == System.Net.HttpStatusCode.OK);
@@ -132,7 +164,7 @@ namespace IntegrationTest.S3
             var expireInHours = 1;
 
             // Act
-            var actual = classUnderTest.GetPreSignedURL(BucketName, FileName, expireInHours);
+            var actual = classUnderTest.GetPreSignedURL(BucketName, FileNameBinary, expireInHours);
 
             // Assert
             StringAssert.Contains(BucketName, actual);

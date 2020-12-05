@@ -40,7 +40,7 @@ namespace Business.AmazonWebServices.S3
                 .PutObjectAsync(request);
         }
 
-        public async Task<PutObjectResponse> PutTextObjectAsync(PutObjectRequest request)
+        public async Task<PutObjectResponse> PutObjectAsync(PutObjectRequest request)
         {
             return await _s3Client
                 .PutObjectAsync(request);

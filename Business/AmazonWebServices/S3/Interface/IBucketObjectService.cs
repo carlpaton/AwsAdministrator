@@ -29,7 +29,7 @@ namespace Business.AmazonWebServices.S3.Interface
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        Task<PutObjectResponse> PutTextObjectAsync(PutObjectRequest request);
+        Task<PutObjectResponse> PutObjectAsync(PutObjectRequest request);
 
         /// <summary>
         /// Deletes the given object (key)

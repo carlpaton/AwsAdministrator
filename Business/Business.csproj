@@ -17,4 +17,10 @@
     <Folder Include="AmazonWebServices\DynamoDB\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AmazonWebServices\S3\Binary-DummyModel.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
