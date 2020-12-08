@@ -11,6 +11,7 @@ using System;
 using Business.AmazonWebServices.S3.Builder;
 using System.Linq;
 using Amazon.S3.Model;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace IntegrationTest.S3
 {
@@ -20,7 +21,8 @@ namespace IntegrationTest.S3
         private const string FileName = "DummyModel.json";
         private const string FileNameWithTag = "WithTag-DummyModel.json";
         private const string FileNameWithMetadata = "WithMetadata-DummyModel.json";
-        private const string FileNameBinary = "Binary-DummyModel.txt";
+        private const string FileNameBinaryTxt = "Binary-DummyModel.txt";
+        private const string FileNameBinaryPdf = "Binary-DummyModel.pdf";
 
         private IJsonSerializationService _jsonSerializationService;
         private IAmazonS3 _s3BucketClient;
@@ -110,21 +112,19 @@ namespace IntegrationTest.S3
         public async Task PutObjectAsync_should_create_object()
         {
             // TODO - use the builder, I think take `contentBody` out of the ctr
-            // TODO - PDF file?
-            var filePath = @"C:\Dev\AwsAdministrator\Business\AmazonWebServices\S3\" + FileNameBinary;
+            var uploadFile = FileNameBinaryPdf;
+            var filePath = @"C:\Dev\AwsAdministrator\Business\AmazonWebServices\S3\Files\" + uploadFile;
 
             IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
-            var contentType = "text/plain";
             var content = File.ReadAllBytes(filePath);
 
-            // TODO - get content type from extension? 
-            var fileInfo = new FileInfo(filePath);
-            //contentType = fileInfo.
+            new FileExtensionContentTypeProvider().TryGetContentType(filePath, out string contentType);
+            contentType = contentType ?? "application/octet-stream";
 
             var request = new PutObjectRequest
             {
                 BucketName = BucketName,
-                Key = FileNameBinary,
+                Key = uploadFile,
                 ContentType = contentType,
                 InputStream = new MemoryStream(content),
             };
@@ -164,7 +164,7 @@ namespace IntegrationTest.S3
             var expireInHours = 1;
 
             // Act
-            var actual = classUnderTest.GetPreSignedURL(BucketName, FileNameBinary, expireInHours);
+            var actual = classUnderTest.GetPreSignedURL(BucketName, FileNameBinaryPdf, expireInHours);
 
             // Assert
             StringAssert.Contains(BucketName, actual);
