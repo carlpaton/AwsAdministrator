@@ -3,11 +3,11 @@ AWS infrastructure administration tool uses the [AWS SDK for .NET Version 3](htt
 
 These services are a proof of concept facade. This means they simply wrap the massive AWS SDK and group the responsibilities in a cohesive manner. The methods return ASW SDK types where your production code would be returning your own entities for your application.
 
-- [Auto Scaling](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Autoscaling)
-- [EC2 (Elastic Compute Cloud)](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Ec2)
-- [ECS (Elastic Container Service)](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Ecs)
-- [ECR (Elastic Container Registry)](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/Ecr)
-- [S3 (Simple Storage Service)](https://github.com/carlpaton/AwsAdministrator/tree/master/Business/AmazonWebServices/S3)
+- [Auto Scaling](https://github.com/carlpaton/AwsAdministrator/tree/master/src/AwsAdmin.Application/Autoscaling)
+- [EC2 (Elastic Compute Cloud)](https://github.com/carlpaton/AwsAdministrator/tree/master/src/AwsAdmin.Application/Ec2)
+- [ECS (Elastic Container Service)](https://github.com/carlpaton/AwsAdministrator/tree/master/src/AwsAdmin.Application/Ecs)
+- [ECR (Elastic Container Registry)](https://github.com/carlpaton/AwsAdministrator/tree/master/src/AwsAdmin.Application/Ecr)
+- [S3 (Simple Storage Service)](https://github.com/carlpaton/AwsAdministrator/tree/master/src/AwsAdmin.Application/S3)
 
 ## Account
 
