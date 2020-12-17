@@ -1,0 +1,75 @@
+﻿@model AwsAdmin.WebApp.Models.ClientModel
+
+@{
+    ViewData["Title"] = "Client";
+}
+
+<h1>Client</h1>
+
+<p>
+    Clients used to authenticate and manage various AWS infrastructure.
+</p>
+
+<div>
+    <h4>Elastic Container Service</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonECSClientModel.AuthenticationServiceName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonECSClientModel.AuthenticationServiceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonECSClientModel.RegionEndpointSystemName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonECSClientModel.RegionEndpointSystemName)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Elastic Compute Cloud</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonEC2ClientModel.AuthenticationServiceName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonEC2ClientModel.AuthenticationServiceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonEC2ClientModel.RegionEndpointSystemName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonEC2ClientModel.RegionEndpointSystemName)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Elastic Container Registry</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonECRClientModel.AuthenticationServiceName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonECRClientModel.AuthenticationServiceName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AmazonECRClientModel.RegionEndpointSystemName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AmazonECRClientModel.RegionEndpointSystemName)
+        </dd>
+    </dl>
+</div>
+
+<h4>References</h4>
+<ul>
+    <li><a href="https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/ECS/TECSClient.html" target="_blank">docs.aws.amazon.com/sdkfornet/v3/apidocs/items/ECS/TECSClient</a></li>
+    <li><a href="https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client.html" target="_blank">docs.aws.amazon.com/sdkfornet/v3/apidocs/items/EC2/TEC2Client</a></li>
+    <li><a href="https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/ECR/TECRClient.html" target="_blank">docs.aws.amazon.com/sdkfornet/v3/apidocs/items/ECR/TECRClient</a></li>
+</ul>

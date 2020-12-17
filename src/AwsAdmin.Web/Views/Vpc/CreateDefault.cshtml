@@ -1,0 +1,30 @@
+﻿@model AwsAdmin.WebApp.Models.CreateDefaultVpcModel
+
+@{
+    ViewData["Title"] = "Create Default VPC";
+}
+
+<h1>VPC</h1>
+
+@if (Model.AlertPrimary != null)
+{
+    <div class="alert alert-primary" role="alert">
+        @Model.AlertPrimary
+    </div>
+}
+
+<h4>Amazon Virtual Private Cloud</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateDefault">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

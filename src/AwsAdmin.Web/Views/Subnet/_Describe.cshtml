@@ -1,0 +1,13 @@
+﻿@model List<AwsAdmin.WebApp.Models.DescribeSubnetModel>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <dl class="row">
+        <dt class="col-sm-2">
+            <label asp-for="@Model[i].SubnetId"></label>
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model[i].SubnetId)
+        </dd>
+    </dl>
+}
