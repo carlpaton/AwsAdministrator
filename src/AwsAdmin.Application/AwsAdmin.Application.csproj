@@ -18,10 +18,4 @@
     <Folder Include="DynamoDB\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="S3\Files\Binary-DummyModel.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

@@ -12,6 +12,7 @@ using Amazon.S3.Model;
 using Microsoft.AspNetCore.StaticFiles;
 using AwsAdmin.Application.Common.Interfaces;
 using AwsAdmin.Infrastructure.Services;
+using AwsAdmin.Infrastructure.Extensions;
 
 namespace IntegrationTest.AwsAdmin.Application.S3
 {
@@ -112,20 +113,18 @@ namespace IntegrationTest.AwsAdmin.Application.S3
         public async Task PutObjectAsync_should_create_object()
         {
             // TODO - use the builder, I think take `contentBody` out of the ctr
+
             var uploadFile = FileNameBinaryPdf;
-            var filePath = @"C:\Dev\AwsAdministrator\Business\AmazonWebServices\S3\Files\" + uploadFile;
+            var filePath = @"C:\Dev\AwsAdministrator\files\" + uploadFile;
 
             IBucketObjectService classUnderTest = new BucketObjectService(_s3BucketClient);
             var content = File.ReadAllBytes(filePath);
-
-            new FileExtensionContentTypeProvider().TryGetContentType(filePath, out string contentType);
-            contentType = contentType ?? "application/octet-stream";
 
             var request = new PutObjectRequest
             {
                 BucketName = BucketName,
                 Key = uploadFile,
-                ContentType = contentType,
+                ContentType = filePath.GetContentType(),
                 InputStream = new MemoryStream(content),
             };
 
