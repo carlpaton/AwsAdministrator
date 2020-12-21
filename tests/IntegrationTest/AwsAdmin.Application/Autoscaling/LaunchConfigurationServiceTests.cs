@@ -5,7 +5,7 @@ using AwsAdmin.Application.Autoscaling;
 using Amazon.AutoScaling.Model;
 using AwsAdmin.Application.Ec2.Constants;
 using System.Collections.Generic;
-using AwsAdmin.Infrastructure;
+using AwsAdmin.Infrastructure.Services;
 
 namespace IntegrationTest.AwsAdmin.Application.AwsAdmin.Application.Autoscaling
 {

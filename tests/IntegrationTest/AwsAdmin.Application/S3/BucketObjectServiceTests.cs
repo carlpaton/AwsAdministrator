@@ -10,8 +10,8 @@ using AwsAdmin.Application.S3.Builder;
 using System.Linq;
 using Amazon.S3.Model;
 using Microsoft.AspNetCore.StaticFiles;
-using AwsAdmin.Infrastructure.Interface;
-using AwsAdmin.Infrastructure;
+using AwsAdmin.Application.Common.Interfaces;
+using AwsAdmin.Infrastructure.Services;
 
 namespace IntegrationTest.AwsAdmin.Application.S3
 {

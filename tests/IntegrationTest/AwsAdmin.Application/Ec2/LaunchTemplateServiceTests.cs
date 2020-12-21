@@ -3,7 +3,7 @@ using AwsAdmin.Application.Ec2.Constants;
 using AwsAdmin.Application.Ec2.Interface;
 using AwsAdmin.Application.Ec2.Mapping;
 using AwsAdmin.Application.Ec2.Model;
-using AwsAdmin.Infrastructure;
+using AwsAdmin.Infrastructure.Services;
 using IntegrationTest.AwsAdmin.Application.Plumbing;
 using NUnit.Framework;
 using System.Collections.Generic;

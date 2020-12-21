@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AwsAdmin.Infrastructure.Interface
+namespace AwsAdmin.Application.Common.Interfaces
 {
     public interface IFileWriteService
     {

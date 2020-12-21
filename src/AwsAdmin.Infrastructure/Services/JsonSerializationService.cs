@@ -1,7 +1,7 @@
-﻿using AwsAdmin.Infrastructure.Interface;
+﻿using AwsAdmin.Application.Common.Interfaces;
 using Newtonsoft.Json;
 
-namespace AwsAdmin.Infrastructure
+namespace AwsAdmin.Infrastructure.Services
 {
     public class JsonSerializationService : IJsonSerializationService
     {

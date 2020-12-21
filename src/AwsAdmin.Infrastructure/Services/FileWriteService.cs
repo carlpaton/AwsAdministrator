@@ -1,8 +1,8 @@
-﻿using AwsAdmin.Infrastructure.Interface;
+﻿using AwsAdmin.Application.Common.Interfaces;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AwsAdmin.Infrastructure
+namespace AwsAdmin.Infrastructure.Services
 {
     public class FileWriteService : IFileWriteService
     {
@@ -18,7 +18,7 @@ namespace AwsAdmin.Infrastructure
             File.AppendAllText(pathCombine, contents);
         }
 
-        private string PathCombine(string path, string fileName) 
+        private static string PathCombine(string path, string fileName)
         {
             return Path.Combine(path, fileName);
         }

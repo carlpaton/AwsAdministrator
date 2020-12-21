@@ -1,6 +1,6 @@
-﻿using AwsAdmin.Infrastructure.Interface;
+﻿using AwsAdmin.Application.Common.Interfaces;
 
-namespace AwsAdmin.Infrastructure
+namespace AwsAdmin.Infrastructure.Services
 {
     public class Base64EncodeService : IBase64EncodeService
     {

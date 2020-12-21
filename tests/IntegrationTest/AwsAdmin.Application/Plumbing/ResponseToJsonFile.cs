@@ -1,5 +1,6 @@
-﻿using AwsAdmin.Infrastructure;
-using AwsAdmin.Infrastructure.Interface;
+﻿using AwsAdmin.Application.Common.Interfaces;
+using AwsAdmin.Infrastructure;
+using AwsAdmin.Infrastructure.Services;
 using System;
 
 namespace IntegrationTest.AwsAdmin.Application.Plumbing

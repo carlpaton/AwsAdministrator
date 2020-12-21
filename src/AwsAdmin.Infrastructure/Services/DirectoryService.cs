@@ -1,7 +1,7 @@
-﻿using AwsAdmin.Infrastructure.Interface;
+﻿using AwsAdmin.Application.Common.Interfaces;
 using System;
 
-namespace AwsAdmin.Infrastructure
+namespace AwsAdmin.Infrastructure.Services
 {
     public class DirectoryService : IDirectoryService
     {
